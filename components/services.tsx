@@ -6,37 +6,31 @@ const services = [
     name: "Corte Clásico",
     description: "Corte de cabello tradicional con acabado profesional y estilo atemporal.",
     price: "15",
-    duration: "30 min",
   },
   {
     name: "Corte + Barba",
     description: "Combo completo de corte de cabello y arreglo de barba con navaja.",
     price: "25",
-    duration: "45 min",
   },
   {
     name: "Afeitado Tradicional",
     description: "Afeitado clásico con navaja, toallas calientes y productos premium.",
     price: "18",
-    duration: "30 min",
   },
   {
     name: "Diseño de Barba",
     description: "Perfilado y diseño de barba personalizado según tu estilo.",
     price: "12",
-    duration: "20 min",
   },
   {
     name: "Corte Degradado",
     description: "Fade profesional con transiciones perfectas y acabado impecable.",
     price: "18",
-    duration: "35 min",
   },
   {
     name: "Tratamiento Capilar",
     description: "Tratamiento hidratante y revitalizante para cabello y cuero cabelludo.",
     price: "20",
-    duration: "25 min",
   },
 ]
 
@@ -70,7 +64,6 @@ export function Services() {
                   </div>
                   <div className="text-right">
                     <span className="text-2xl font-bold text-primary">{service.price}€</span>
-                    <p className="text-xs text-muted-foreground">{service.duration}</p>
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">

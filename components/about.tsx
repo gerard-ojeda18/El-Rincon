@@ -1,7 +1,7 @@
 import { Award, Users, Clock, Star } from "lucide-react"
 
 const stats = [
-  { icon: Clock, value: "40+", label: "Años de Experiencia" },
+  { icon: Clock, value: "30+", label: "Años de Experiencia" },
   { icon: Users, value: "15K+", label: "Clientes Satisfechos" },
   { icon: Award, value: "5", label: "Barberos Expertos" },
   { icon: Star, value: "4.9", label: "Valoración Media" },
@@ -47,7 +47,7 @@ export function About() {
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-lg">
-              <div className="text-4xl font-bold">40+</div>
+              <div className="text-4xl font-bold">30+</div>
               <div className="text-sm opacity-90">Años de historia</div>
             </div>
           </div>
