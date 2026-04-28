@@ -16,12 +16,8 @@ const images = [
     alt: "Herramientas de barbería",
   },
   {
-    src: "https://images.unsplash.com/photo-1593702288056-f5e3a5e28c5c?q=80&w=2070&auto=format&fit=crop",
+    src: "https://lh3.googleusercontent.com/rd-gg-dl/AFfU-fKBER-vvX9hrb8DQ19xz86McAqL3cB5yqoIOlzXCxnvF8TMznXbH6TZgMDLp_4yEv5csnrbcb43drpqtlp2LzyQmcB-xQXM9rkbu-OXsHVBynXdKI8F8Kvax2e0wl2do81Rqaqx3zuLTByn097uBhzhzUaDDkqL5MRFcGNJfu8kP-5wJNof7ssR5KIKtcy02G6mdRKtFHN1VguEdvFd5HUW0oGjh2sN9JC0cNtT92aj0XNfNf1LN0Kj-IBC6zrpOxtYwkrWPyqarDTj5psDXG593oJdp0Yzv00m15gdzxfbmQ85Myr7ZeJFloV0T2GzvmwhGdaKxLaliawTEab50y5RzUEZ-S3cTGoUWArVSMMMV6XpeLnR08VW7OIJ9fZ0r6XjMLtvCeyNm37KI5VMak32KSXBjugIuzdklcXb2MsZJBNLoOm32cGQaFBl3pT6L27YSz8z2FLdVyLAYLMfNh_Vux-AmkTi1aQokNcKU5s3HLpVIOn6yBRYVKDgFKu3o5f3PO3S-AB6s_Qr7UZ8O39E--LwYWADY-v8yb4m2Y3uzTjIEDZ9wmioLlBtlKoBK999-d7F541WE4TaKnFHUGp-zHRkhRUauc7meCloo5B8W9cFFYI2dT-bt-7-YCO3Ha_Vp5987KcRp6iwlaymbXrz8ngVRefZtJKsYRSzRJpXjDqBDinD_jbmt5svsW8lxxAU8Uj-rtAeJjX2YsM1AMhxVBiwBR6YLJqGId524EYxoJTem7SsXLZQPtc-ZADsIiiO8dDy07XsrhiDaO_bKxQoLTcyLtA3yt-Ea5tgGjzwAguJsPWrsGvz6-y8SOvgBy-nak489wz7hADRh-MBZCLWOqcv1lPj3GBq-acHhPuomK1rFxilgIBqZMkyVZNJfBVgrwY66S8oSc6OxZwDXpDTURl6EPNmXZ8_5GwYdTZJMARtDe09Q8PpGvD7dOM3j5WHOHHR1JQ0kWBYgg3LcNzrGifv7LgicpHYlo7_WEkHyUAbGXpoqHxME5ybbyrfj4TQdfutjw2aK7DZBTbJAhYy45GCaY-PSVogwzU9QyHXDlgQ1ihW6oLaoFmx_AnSfkyQzhb6khZIeeG69UD7WeUe3EOUvy3BK18M_OMJ93QT47DnMdJZGiGvc-Q0qZktFxaI34XSH7dB_APj-a7ob4rWy9QAG_zMxv1IEOwrESb_sWtJdOTYFNFJ4LokJOrzhqCfVP7LP-T9gY7kJaRlkY0=s1024-rj",
     alt: "Estilo moderno",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1634302086411-5d82c5ec7c3c?q=80&w=2070&auto=format&fit=crop",
-    alt: "Detalle de corte",
   },
 ]
 

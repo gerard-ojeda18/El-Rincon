@@ -52,7 +52,7 @@ export function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-primary" />
-            <span>Calle Principal 123, Centro</span>
+            <span>Av. Corrientes 1234, CABA, Buenos Aires</span>
           </div>
         </div>
       </div>

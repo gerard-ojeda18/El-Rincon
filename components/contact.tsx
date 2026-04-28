@@ -11,17 +11,17 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Dirección",
-    content: "Calle Principal 123, Centro, 28001 Madrid",
+    content: "Av. Corrientes 1234, CABA, Buenos Aires",
   },
   {
     icon: Phone,
     title: "Teléfono",
-    content: "+34 912 345 678",
+    content: "+54 11 1234-5678",
   },
   {
     icon: Mail,
     title: "Email",
-    content: "info@barberiaelrincon.es",
+    content: "info@barberiaelrincon.com.ar",
   },
   {
     icon: Clock,
@@ -120,7 +120,7 @@ export function Contact() {
                     <Input
                       id="phone"
                       type="tel"
-                      placeholder="+34 600 000 000"
+                      placeholder="54 11 1234-5678"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       required
