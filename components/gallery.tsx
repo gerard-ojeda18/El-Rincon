@@ -1,3 +1,6 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+
 const images = [
   {
     src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop",
@@ -16,16 +19,75 @@ const images = [
     alt: "Herramientas de barbería",
   },
   {
-    src: "https://lh3.googleusercontent.com/rd-gg-dl/AFfU-fKBER-vvX9hrb8DQ19xz86McAqL3cB5yqoIOlzXCxnvF8TMznXbH6TZgMDLp_4yEv5csnrbcb43drpqtlp2LzyQmcB-xQXM9rkbu-OXsHVBynXdKI8F8Kvax2e0wl2do81Rqaqx3zuLTByn097uBhzhzUaDDkqL5MRFcGNJfu8kP-5wJNof7ssR5KIKtcy02G6mdRKtFHN1VguEdvFd5HUW0oGjh2sN9JC0cNtT92aj0XNfNf1LN0Kj-IBC6zrpOxtYwkrWPyqarDTj5psDXG593oJdp0Yzv00m15gdzxfbmQ85Myr7ZeJFloV0T2GzvmwhGdaKxLaliawTEab50y5RzUEZ-S3cTGoUWArVSMMMV6XpeLnR08VW7OIJ9fZ0r6XjMLtvCeyNm37KI5VMak32KSXBjugIuzdklcXb2MsZJBNLoOm32cGQaFBl3pT6L27YSz8z2FLdVyLAYLMfNh_Vux-AmkTi1aQokNcKU5s3HLpVIOn6yBRYVKDgFKu3o5f3PO3S-AB6s_Qr7UZ8O39E--LwYWADY-v8yb4m2Y3uzTjIEDZ9wmioLlBtlKoBK999-d7F541WE4TaKnFHUGp-zHRkhRUauc7meCloo5B8W9cFFYI2dT-bt-7-YCO3Ha_Vp5987KcRp6iwlaymbXrz8ngVRefZtJKsYRSzRJpXjDqBDinD_jbmt5svsW8lxxAU8Uj-rtAeJjX2YsM1AMhxVBiwBR6YLJqGId524EYxoJTem7SsXLZQPtc-ZADsIiiO8dDy07XsrhiDaO_bKxQoLTcyLtA3yt-Ea5tgGjzwAguJsPWrsGvz6-y8SOvgBy-nak489wz7hADRh-MBZCLWOqcv1lPj3GBq-acHhPuomK1rFxilgIBqZMkyVZNJfBVgrwY66S8oSc6OxZwDXpDTURl6EPNmXZ8_5GwYdTZJMARtDe09Q8PpGvD7dOM3j5WHOHHR1JQ0kWBYgg3LcNzrGifv7LgicpHYlo7_WEkHyUAbGXpoqHxME5ybbyrfj4TQdfutjw2aK7DZBTbJAhYy45GCaY-PSVogwzU9QyHXDlgQ1ihW6oLaoFmx_AnSfkyQzhb6khZIeeG69UD7WeUe3EOUvy3BK18M_OMJ93QT47DnMdJZGiGvc-Q0qZktFxaI34XSH7dB_APj-a7ob4rWy9QAG_zMxv1IEOwrESb_sWtJdOTYFNFJ4LokJOrzhqCfVP7LP-T9gY7kJaRlkY0=s1024-rj",
+    src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop",
     alt: "Estilo moderno",
   },
-]
+];
+
+function AnimatedImage({ src, alt, index, rowSpan }: { src: string; alt: string; index: number; rowSpan?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`relative overflow-hidden rounded-lg group ${rowSpan ? "row-span-2" : ""}`}
+      style={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0) scale(1)" : "translateY(30px) scale(0.97)",
+        transition: `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`,
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        <span className="text-foreground font-medium text-sm px-4 text-center">
+          {alt}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export function Gallery() {
+  const { ref: headerRef, inView: headerInView } = (() => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+        { threshold: 0.2 }
+      );
+      if (ref.current) observer.observe(ref.current);
+      return () => observer.disconnect();
+    }, []);
+    return { ref, inView };
+  })();
+
   return (
     <section id="galeria" className="py-24 bg-secondary/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className="text-center mb-16"
+          style={{
+            opacity: headerInView ? 1 : 0,
+            transform: headerInView ? "translateY(0)" : "translateY(30px)",
+            transition: "opacity 0.7s ease, transform 0.7s ease",
+          }}
+        >
           <span className="inline-block text-primary text-sm tracking-[0.3em] uppercase font-medium mb-4">
             Galería
           </span>
@@ -33,33 +95,23 @@ export function Gallery() {
             Nuestro Trabajo
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Cada corte cuenta una historia. Descubre el arte y la dedicación 
+            Cada corte cuenta una historia. Descubre el arte y la dedicación
             que ponemos en cada uno de nuestros servicios.
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((image, index) => (
-            <div 
-              key={index} 
-              className={`relative overflow-hidden rounded-lg group ${
-                index === 0 || index === 5 ? 'row-span-2' : ''
-              }`}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-foreground font-medium text-sm px-4 text-center">
-                  {image.alt}
-                </span>
-              </div>
-            </div>
+            <AnimatedImage
+              key={index}
+              src={image.src}
+              alt={image.alt}
+              index={index}
+              rowSpan={index === 0 || index === 4}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
